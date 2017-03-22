@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="../js/pano_material.js"></script>
+    <script src="../js/color_changer.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- Asset management system. -->
+      <a-assets>
+        <img id="pano" src="images/pano_small.jpg">
+      </a-assets>
+
+      <a-icosahedron detail="1" position="2.0 1.5 0.0" scale="0.99 0.99 0.99"
+                wireframe="true" color="#FFFFFF"></a-icosahedron>
+      <a-sphere position="2.0 1.5 0.0" scale="-1.0 -1.0 -1.0"
+                material="shader: pano-shader-magic;src: #pano"
+                rcwaypoint></a-sphere>
+      <a-sky id="sky" color="#AAAAFF"></a-sky>
+    </a-scene>
+  </body>
+</html>
