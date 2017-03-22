@@ -1,6 +1,7 @@
 AFRAME.registerComponent('rcwaypoint', {
   schema: {
-    triggerrad: {type: 'number', default: 1.0}
+    type: 'vec3',
+    default: {x: 0.0, y: 0.0, z: 0.0}
   },
 
   init: function() {
@@ -10,7 +11,8 @@ AFRAME.registerComponent('rcwaypoint', {
       //this.setAttribute('material', 'color', COLORS[randomIndex]);
       var pos = self.el.getAttribute("position");
       var parent = document.querySelector('#camparent');
-      parent.setAttribute("position", {x: pos.x, y: 0.0, z: pos.z});
+      //parent.setAttribute("position", {x: pos.x, y: 0.0, z: pos.z});
+      parent.setAttribute("position", self.data);
     });
   },
 

@@ -20,9 +20,12 @@
         </a-entity>
       </a-entity>
 
-      <a-sphere position="2.0 1.5 0.0" class="clickable" color="#6173F4" radius="0.2" rcwaypoint></a-sphere>
-      <a-sphere position="-2.0 1.5 0.0" class="clickable" color="#FF0000" radius="0.2" rcwaypoint></a-sphere>
-      <a-sphere position="0.0 1.5 2.0" class="clickable" color="#AAFFFF" radius="0.2" rcwaypoint></a-sphere>
+      <a-sphere scale="0.5 0.5 0.5" position="2.0 1.5 0.0" class="clickable" color="#6173F4" radius="0.2" rcwaypoint="0.0 -3.0 0.0">
+        <a-sphere id="mychild" position="0.0 0.2 0.0" color="#FF00FF" radius="0.2"></a-sphere>
+      </a-sphere>
+
+      <a-sphere position="-2.0 1.5 0.0" class="clickable" color="#FF0000" radius="0.2" rcwaypoint="0.0 10.0 0.0"></a-sphere>
+      <a-sphere position="0.0 1.5 2.0" class="clickable" color="#AAFFFF" radius="0.2" rcwaypoint="10.0 0.0 0.0"></a-sphere>
       <a-sphere position="0.0 1.5 -2.0" color="#000000" radius="0.2" rcwaypoint></a-sphere>
       <a-sky id="sky" color="#AAAAFF"></a-sky>
     </a-scene>
