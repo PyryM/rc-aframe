@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="../js/waypoint.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-entity id="camparent" position="0 0 0">
+        <a-entity camera="userHeight: 1.6" look-controls wasd-controls>
+          <a-entity cursor="fuse: true; fuseTimeout: 500"
+                    position="0 0 -0.2"
+                    geometry="primitive: ring; radiusInner: 0.005; radiusOuter: 0.008"
+                    material="color: blue; shader: flat"
+                    raycaster="far: 20; interval: 100; objects: .clickable">
+            <a-animation begin="click" easing="ease-in" attribute="scale"
+                   fill="forwards" from="0.1 0.1 0.1" to="1 1 1" dur="100"></a-animation>
+            <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale"
+                     fill="forwards" from="1 1 1" to="0.1 0.1 0.1" dur="500"></a-animation>
+          </a-entity>
+        </a-entity>
+      </a-entity>
+
+      <a-sphere position="2.0 1.5 0.0" class="clickable" color="#6173F4" radius="0.2" rcwaypoint></a-sphere>
+      <a-cone id="cone1" scale="0.125 0.125 0.125" position="2.5 1.0 0.5" class="clickable" color="tomato" radius-bottom="2" radius-top="0.25" rcwaypoint></a-cone>
+      <a-sphere position="-2.0 1.5 0.0" class="clickable" color="#FF0000" radius="0.2" rcwaypoint></a-sphere>
+      <a-cone id="cone2" scale="0.125 0.125 0.125" position="-1.5 1.0 0.5" class="clickable" color="tomato" radius-bottom="2" radius-top="0.25" rcwaypoint></a-cone>
+      <a-sphere position="0.0 1.5 2.0" class="clickable" color="#AAFFFF" radius="0.2" rcwaypoint></a-sphere>
+      <a-cone id="cone3" scale="0.125 0.125 0.125" position="0.5 1.0 2.0" class="clickable" color="tomato" radius-bottom="2" radius-top="0.25" rcwaypoint></a-cone>
+      <a-sphere position="0.0 1.5 -2.0" color="#000000" radius="0.2" rcwaypoint></a-sphere>
+      <a-cone id="cone4" scale="0.125 0.125 0.125" position="-0.5 1.0 -1.5" class="clickable" color="tomato" radius-bottom="2" radius-top="0.25" rcwaypoint></a-cone>
+      <a-sky id="sky" color="#AAAAFF"></a-sky>
+    </a-scene>
+  </body>
+</html>
