@@ -11,10 +11,10 @@
         <img id="pano" src="images/pano_small.jpg">
       </a-assets>
 
-      <a-icosahedron detail="1" position="2.0 1.5 0.0" scale="0.99 0.99 0.99"
+      <a-icosahedron detail="2" position="2.0 1.5 0.0" scale="0.99 0.99 0.99"
                 wireframe="true" color="#FFFFFF"></a-icosahedron>
       <a-sphere position="2.0 1.5 0.0" scale="-1.0 -1.0 -1.0"
-                material="shader: pano-shader-magic;src: #pano"
+                material="shader: pano-warp-magic; src: #pano; warpParams: -0.25 1.25 0.0 0.0"
                 rcwaypoint></a-sphere>
       <a-sky id="sky" color="#AAAAFF"></a-sky>
     </a-scene>
