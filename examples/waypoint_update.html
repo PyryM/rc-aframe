@@ -2,9 +2,15 @@
   <head>
     <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
     <script src="../js/waypoint.js"></script>
+    <script src="../js/pano_material.js"></script>
   </head>
   <body>
     <a-scene>
+      <!-- Asset management system. -->
+      <a-assets>
+        <img id="pano" src="images/pano_small.jpg">
+      </a-assets>
+
       <a-entity id="camparent" position="0 0 0" walker>
         <a-entity camera="userHeight: 1.6" look-controls wasd-controls>
           <a-entity cursor="fuse: true; fuseTimeout: 500"
