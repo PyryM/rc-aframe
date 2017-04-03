@@ -3,6 +3,7 @@
     <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
     <script src="../js/pano_material.js"></script>
     <script src="../js/waypoint.js"></script>
+    <script src="../js/exit.js"></script>
   </head>
   <body>
     <a-scene>
@@ -26,8 +27,12 @@
         </a-entity>
       </a-entity>
 
+      <a-sphere id="start" position="0.1 0.0 0.0" color="#FFFFFF" radius="0.1" rcwaypoint></a-sphere>
       <a-icosahedron detail="1" position="2.0 1.5 0.0" scale="0.99 0.99 0.99"
-                wireframe="true" color="#FFFFFF"></a-icosahedron>
+                wireframe="true" color="#FFFFFF">
+        <a-sphere class="clickable" position="0.0 -0.5 0.0" color="red" radius="0.1" rcexitbutton="teleport_waypoint: start">
+        </a-sphere>
+      </a-icosahedron>
       <a-sphere class="clickable"
                 position="2.0 1.5 0.0" scale="-1.0 -1.0 -1.0"
                 material="shader: pano-shader-magic;src: #pano"
