@@ -1,6 +1,6 @@
 AFRAME.registerComponent('rcexitbutton', {
   schema: {
-    teleport_waypoint: {type: "string"}
+    type: "string"
   },
 
   init: function() {
@@ -8,11 +8,11 @@ AFRAME.registerComponent('rcexitbutton', {
     var self = this;
     this.el.addEventListener('click', function (evt) {
       //this.setAttribute('material', 'color', COLORS[randomIndex]);
-      var pos = self.el.getAttribute("position");
       var parent = document.querySelector('#camparent');
-      var t_w = document.querySelector('#' + self.data.teleport_waypoint);
+      console.log("Teleporting to: " + self.data);
+      var t_w = document.querySelector('#' + self.data);
       var tpos = t_w.getAttribute("position");
-      parent.setAttribute("position", {x: tpos.x, y: 0.0, z: tpos.z});
+      parent.setAttribute("position", tpos);
     });
   },
 
