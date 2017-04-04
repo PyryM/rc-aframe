@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="../js/pano_material.js"></script>
+    <script src="../js/color_changer.js"></script>
+    <script src="../js/videocontrol.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- Asset management system. -->
+      <a-assets>
+        <img id="pano" src="images/pano_small.jpg">
+        <video id="vidconstruction" src="videos/construction.mp4">
+        <video id="vidwed" loop="true" src="videos/wednesday.mp4">
+      </a-assets>
+
+      <a-icosahedron detail="2" position="-1.0 1.5 -1.0" scale="0.49 0.49 0.49"
+                wireframe="true" color="#FFFFFF"
+                transparent="true" opacity="0.2"></a-icosahedron>
+      <a-icosahedron detail="3" position="-1.0 1.5 -1.0" scale="-0.5 -0.5 -0.5"
+                material="shader: pano-warp-magic; src: #vidwed; warpParams: -1.0 1.5 0.0 0.0"
+                videocontrol="src: #vidwed"></a-icosahedron>
+
+      <a-icosahedron detail="2" position="1.0 1.5 1.0" scale="0.49 0.49 0.49"
+                wireframe="true" color="#FFFFFF"
+                transparent="true" opacity="0.2"></a-icosahedron>
+      <a-icosahedron detail="3" position="1.0 1.5 1.0" scale="-0.5 -0.5 -0.5"
+                material="shader: pano-warp-magic; src: #vidconstruction; warpParams: -1.0 1.5 0.0 0.0"
+                videocontrol="src: #vidconstruction"></a-icosahedron>
+
+      <a-box width="5.25" height="0.1" position="3.0 0.0 3.0" depth="5.25" color="#333333"></a-box>
+      <a-box width="5.25" height="0.1" position="-3.0 0.0 -3.0" depth="5.25" color="#333333"></a-box>
+      <a-box width="5.25" height="0.1" position="-3.0 0.0 3.0" depth="5.25" color="#CCCCCC"></a-box>
+      <a-box width="5.25" height="0.1" position="3.0 0.0 -3.0" depth="5.25" color="#CCCCCC"></a-box>
+      <a-sky id="sky" color="#AAAAAA"></a-sky>
+    </a-scene>
+  </body>
+</html>
