@@ -1,16 +1,19 @@
 AFRAME.registerComponent('videocontrol', {
   schema: {
     radius: {type: 'number', default: 1.0},
-    src:  {type: 'selector'}
+    src:    {type: 'selector'},
+    pos:    {type: 'vec3'}
   },
 
   init: function() {
     this.triggerpos = new THREE.Vector3();
     this.videoState = "unknown";
+
+    // var camparent = document.querySelector("#camparent");
   },
 
   update: function() {
-    var temppos = this.el.getAttribute('position');
+    var temppos = this.data.pos || this.el.getAttribute('position');
     this.triggerpos.set(temppos.x, temppos.y, temppos.z);
   },
 
@@ -19,13 +22,13 @@ AFRAME.registerComponent('videocontrol', {
     var campos = scene.camera.getWorldPosition();
 
     if(campos.distanceTo(this.triggerpos) < this.data.radius) {
-      this.startPlaying();
+      this.startPlaying(campos);
     } else {
-      this.stopPlaying();
+      this.stopPlaying(campos);
     }
   },
 
-  startPlaying: function() {
+  startPlaying: function(campos) {
     if(this.videoState == "playing") {
       return;
     }
@@ -33,7 +36,7 @@ AFRAME.registerComponent('videocontrol', {
     this.videoState = "playing";
   },
 
-  stopPlaying: function() {
+  stopPlaying: function(campos) {
     if(this.videoState == "stopped") {
       return;
     }

@@ -10,8 +10,11 @@ AFRAME.registerComponent('rcwaypoint', {
       //this.setAttribute('material', 'color', COLORS[randomIndex]);
       var pos = self.el.getAttribute("position");
       var parent = document.querySelector('#camparent');
-      parent.components.walker.walk_to(pos);
-      //parent.setAttribute("position", {x: pos.x, y: 0.0, z: pos.z});
+      if(parent.components.walker) {
+        parent.components.walker.walk_to(pos);
+      } else {
+        parent.setAttribute("position", pos);
+      }
     });
   },
 
@@ -55,7 +58,7 @@ AFRAME.registerComponent('walker', {
       var new_z = alpha * this.el.getAttribute("target").z + (1 - alpha)*this.el.getAttribute("start").z;
       this.el.setAttribute("position", {x: new_x, y: new_y, z: new_z});
     }*/
-    
+
     if (this.time < 1.0)
     {
       this.time += (1.0/60.0);
