@@ -12,6 +12,7 @@ AFRAME.registerComponent('rcexitbutton', {
       console.log("Teleporting to: " + self.data);
       var pos = self.data.getAttribute("position");
       if(parent.components.walker) {
+        parent.components.walker.unlock();
         parent.components.walker.walk_to(pos);
       } else {
         parent.setAttribute("position", pos);
@@ -48,7 +49,7 @@ AFRAME.registerComponent('rcexitbutton', {
 //       }
 //     });
 //   },
-// 
+//
 //   update: function() {
 //     // nothing to do
 //   }

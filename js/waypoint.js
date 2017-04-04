@@ -1,6 +1,7 @@
 AFRAME.registerComponent('rcwaypoint', {
   schema: {
-    triggerrad: {type: 'number', default: 1.0}
+    triggerrad: {type: 'number', default: 1.0},
+    lock: {type: 'boolean', default: false}
   },
 
   init: function() {
@@ -11,7 +12,9 @@ AFRAME.registerComponent('rcwaypoint', {
       var pos = self.el.getAttribute("position");
       var parent = document.querySelector('#camparent');
       if(parent.components.walker) {
-        parent.components.walker.walk_to(pos);
+        // 'lock' the walker so we can't accidentally move out of the sphere
+        // due to weird raycasting
+        parent.components.walker.walk_to(pos, self.data.lock);
       } else {
         parent.setAttribute("position", pos);
       }
@@ -43,6 +46,7 @@ AFRAME.registerComponent('walker', {
     this.limit = new THREE.Vector3();
     this.time = 0.0;
     this.start = new THREE.Vector3();
+    this.locked = false;
     //var time = 1;
     //var start = "0 0 0";
   },
@@ -71,17 +75,28 @@ AFRAME.registerComponent('walker', {
     //this.el.setAttribute("position", {x: this.tar.x, y: 0.0, z: this.tar.z});
   },
 
-  walk_to: function(pos) {
+  walk_to: function(pos, lock) {
+    if(this.locked) {
+      return;
+    }
     //var tar = this.el.getAttribute("target");
     //var tar = pos;
     this.tar.set(pos.x, pos.y, pos.z);
     var ourpos = this.el.getAttribute("position");
     this.start.set(ourpos.x, ourpos.y, ourpos.z);
     this.time = 0.0;
+    if(lock) {
+      this.locked = true;
+    }
+
     //var start = this.pos;
     //this.el.setAttribute("position", {x: this.tar.x, y: 0.0, z: this.tar.z});
     //self.setAttribute("target", pos);
     //cubic function 3t^2 - 2t^3
+  },
+
+  unlock: function() {
+    this.locked = false;
   },
 
   update: function() {}
