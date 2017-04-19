@@ -11,9 +11,11 @@
       <!-- Asset management system. -->
       <a-assets>
         <img id="pano" src="images/pano_small.jpg">
-        <video id="vidconstruction" src="videos/construction.mp4">
-        <video id="vidwed" loop="true" src="videos/wednesday.mp4">
-        <video id="vidpaint" loop="true" autoplay src="videos/painting.mp4">
+        <video id="vidconstruction" src="videos/construction.mp4"></video>
+        <video id="vidwed" loop="true" src="videos/wednesday.mp4"></video>
+        <video id="vidpaint" loop="true" autoplay src="videos/painting.mp4"></video>
+        <video id="videntrance" loop="true" autoplay src="videos/entrance.mp4"></video>
+        <video id="vidgarage" loop="true" autoplay src="videos/entrance.mp4"></video>
 
         <script id="imagesphere" type="text/html">
           <a-entity position="${x} 0.0 ${z}">
@@ -58,15 +60,15 @@
       <a-obj-model position="0 1.5 0" id="sus1" src="meshes/sus2_1.obj" mtl="meshes/sus2.mtl"></a-obj-model>
       <a-obj-model position="0 1.5 0" id="sus2" src="meshes/sus2_2.obj" mtl="meshes/sus2.mtl"></a-obj-model>
 
-      <a-video src="#vidpaint" width="4" height="3" rotation="0 58.44 0"
+      <!-- <a-video src="#vidpaint" width="4" height="3" rotation="0 58.44 0"
                 position="-13.8 1.6 -9.28" scale="1.611 1.354 0.976">
-      </a-video>
+      </a-video> -->
 
-      <a-video src="#vidwed" width="4" height="3" rotation="0 146.4 0"
+      <a-video src="#vidgarage" width="4" height="3" rotation="0 146.4 0"
                 position="-2.20 1.123 1.821" scale="0.756 0.795 1">
       </a-video>
 
-      <a-video src="#vidconstruction" width="4" height="3" rotation="0 -122 0"
+      <a-video src="#videntrance" width="4" height="3" rotation="0 -122 0"
                 position="7.591 1.647 4.262" scale="1.429 1.246 1">
       </a-video>
 
