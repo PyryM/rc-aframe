@@ -68,18 +68,27 @@
       <a-obj-model rotation="-90 0 0" position="0 1.5 0" id="sus1" src="meshes/sus_low_untextured.obj"
                   material="shader: flat; color: gray"></a-obj-model>
 
-      <a-video src="#vidpaint" width="4" height="3" rotation="0 58.44 0"
-                position="-13.8 1.6 -9.28" scale="1.611 1.354 0.976">
+      <a-video src="#vidpaint" width="6.44" height="4.06" rotation="0 58.44 0"
+                position="-13.8 1.6 -9.28">
+        <a-plane color="black" width="1.1" height="0.22" position="-1.9 -1.34 0.05">
+          <a-entity position="0.0 0.0 0.005" text="width: 1.0; value: Painting a wall\nIn the place; align: left; wrapCount: 20"></a-entity>
+        </a-plane>
       </a-video>
 
-      <a-video src="#vidgarage" width="4" height="3" rotation="0 146.4 0"
-                position="-2.20 1.123 1.821" scale="0.756 0.795 1"
+      <a-video src="#vidgarage" width="3.8" height="2.39" rotation="0 146.4 0"
+                position="-2.20 1.123 1.821"
                 videocontrol="src: #vidgarage; radius: 3.0; pos: -2.20 1.6 1.821">
+        <a-plane color="black" width="1.1" height="0.22" position="-0.8 -1.0 0.05">
+          <a-entity position="0.0 0.0 0.005" text="width: 1.0; value: A meeting\nHappening Here; align: left; wrapCount: 20"></a-entity>
+        </a-plane>
       </a-video>
 
-      <a-video src="#videntrance" width="4" height="3" rotation="0 -122 0"
-                position="6.39 1.647 3.44" scale="1.429 1.246 1"
+      <a-video src="#videntrance" width="5.72" height="3.74" rotation="0 -122 0"
+                position="6.39 1.647 3.44"
                 videocontrol="src: #videntrance; radius: 5.0; pos: 7.591 1.6 4.262">
+        <a-plane color="black" width="1.1" height="0.22" position="-2.0 -1.5 0.05">
+          <a-entity position="0.0 0.0 0.005" text="width: 1.0; value: Masonry installation\nLine two; align: left; wrapCount: 20"></a-entity>
+        </a-plane>
       </a-video>
 
       <a-entity template="src: #videosphere"

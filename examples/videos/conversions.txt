@@ -1,0 +1,2 @@
+MP4Box -add hallway_smaller.mp4#video:par=1:1 hallway_fixed.mp4
+avconv -i bleh.mp4 -c:v h264 -preset veryslow -crf 27 -an feh.mp4
