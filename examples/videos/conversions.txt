@@ -1,2 +1,3 @@
 MP4Box -add hallway_smaller.mp4#video:par=1:1 hallway_fixed.mp4
 avconv -i bleh.mp4 -c:v h264 -preset veryslow -crf 27 -an feh.mp4
+mkvmerge -o mw.mp4 monday_lowres.mp4 \+ wednesday_lowres.mp4 \+ thursday_lowres.mp4
