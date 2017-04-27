@@ -12,11 +12,11 @@
       <a-assets>
         <img id="pano" src="images/pano_small.jpg">
         <video id="vidconstruction" src="videos/construction.mp4"></video>
-        <video id="vidwed" loop="true" src="videos/mw_smaller.mp4"></video>
-        <video id="vidpaint" loop="true" autoplay src="videos/painting_smaller.mp4"></video>
+        <video id="vidwed" loop="true" src="videos/timelapse_smaller.mp4"></video>
+        <video id="vidpaint" loop="true" autoplay src="videos/fcbackwall_smaller.mp4"></video>
         <video id="videntrance" loop="true" autoplay src="videos/entrance_smaller.mp4"></video>
         <video id="vidgarage" loop="true" autoplay src="videos/garage_fixed.mp4"></video>
-        <video id="vidhallway" loop="true" autoplay src="videos/hallway_smaller.mp4"></video>
+        <video id="vidhallway" loop="true" autoplay src="videos/hallway_fixed.mp4"></video>
 
         <script id="imagesphere" type="text/html">
           <a-entity position="${x} 0.0 ${z}">
@@ -88,6 +88,14 @@
                 videocontrol="src: #videntrance; radius: 5.0; pos: 7.591 1.6 4.262">
         <a-plane color="black" width="1.1" height="0.22" position="-2.0 -1.5 0.05">
           <a-entity position="0.0 0.0 0.005" text="width: 1.0; value: Masonry installation\nLine two; align: left; wrapCount: 20"></a-entity>
+        </a-plane>
+      </a-video>
+
+      <a-video src="#vidhallway" width="3.2" height="1.8" rotation="0 -34 0"
+                position="1.78 1.0 -3.0"
+                videocontrol="src: #vidhallway; radius: 3.0; pos: 1.78 1.0 -3.0">
+        <a-plane color="black" width="1.1" height="0.22" position="-0.6 -0.7 0.05">
+          <a-entity position="0.0 0.0 0.005" text="width: 1.0; value: A meeting\nWith Courtney; align: left; wrapCount: 20"></a-entity>
         </a-plane>
       </a-video>
 
