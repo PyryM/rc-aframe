@@ -34,6 +34,43 @@ AFRAME.registerShader('pano-shader-magic', {
   ].join('\n')
 });
 
+AFRAME.registerShader('pano-shader-magic2', {
+  schema: {
+    src: {type: 'map', is: 'uniform'}
+  },
+
+  vertexShader: [
+    'varying vec2 vUV;',
+    'varying vec3 modelViewDir;',
+    'void main(void) {',
+    '  vec4 worldPos = modelMatrix * vec4(position, 1.0);',
+    '  vec3 worldViewDir = worldPos.xyz - cameraPosition;',
+    '  modelViewDir = (vec4(worldViewDir, 0.0) * modelMatrix).xyz;',
+    '  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);',
+    '  vUV = uv;',
+    '}'
+  ].join('\n'),
+
+  fragmentShader: [
+    '#define M_PI 3.1415926535897932384626433832795',
+    'uniform sampler2D src;',
+    'varying vec2 vUV;',
+    'varying vec3 modelViewDir;',
+    'vec3 panoMap(vec3 vdir) {',
+    '  float r = sqrt(vdir.x*vdir.x + vdir.z*vdir.z);',
+    '  float theta = atan(vdir.z, vdir.x)/M_PI;',
+    '  float phi = atan(vdir.y, r)/M_PI;',
+    '  vec2 uv = vec2(theta*0.5 + 0.5, phi + 0.5);',
+    '  return texture2D(src, uv).rgb;',
+    '}',
+    'void main() {',
+    '  vec3 ndir = normalize(modelViewDir);',
+    '  gl_FragColor.rgb = panoMap(ndir);',
+    '  gl_FragColor.a = 1.0;',
+    '}'
+  ].join('\n')
+});
+
 AFRAME.registerShader('pano-warp-magic', {
   schema: {
     src: {type: 'map', is: 'uniform'},
@@ -78,4 +115,28 @@ AFRAME.registerShader('pano-warp-magic', {
     '  gl_FragColor.a = 1.0;',
     '}'
   ].join('\n')
+});
+
+AFRAME.registerComponent('stereo-control', {
+  schema: {
+    type: 'string',
+    default: 'left'
+  },
+
+  init: function(){
+    // nothing to do
+  },
+
+  // On element update, put in the right layer, 0:both, 1:left, 2:right (spheres or not)
+  update: function(oldData){
+    var object3D = this.el.object3D.children[0];
+    var data = this.data;
+
+    console.log("Putting into eye " + data);
+    if(data === "both"){
+      object3D.layers.set(0);
+    } else {
+      object3D.layers.set(data === 'left' ? 1:2);
+    }
+  },
 });
