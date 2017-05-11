@@ -18,6 +18,9 @@
         <video id="vidgarage" loop="true" autoplay src="videos/fccourtney_smaller.mp4"></video>
         <video id="vidhallway" loop="true" autoplay src="videos/hallway_fixed.mp4"></video>
 
+        <a-asset-item id="stand-obj" src="meshes/stand.obj"></a-asset-item>
+        <a-asset-item id="stand-mtl" src="meshes/stand.mtl"></a-asset-item>
+
         <script id="imagesphere" type="text/html">
           <a-entity position="${x} 0.0 ${z}">
             <a-icosahedron detail="2" position="0.0 1.6 0.0" scale="0.49 0.49 0.49"
@@ -59,9 +62,9 @@
 
       <a-sky color="gray"></a-sky>
 
-      <!-- <a-obj-model position="0 1.5 0" id="sus0" src="meshes/sus2_0.obj" mtl="meshes/sus2.mtl"></a-obj-model>
-      <a-obj-model position="0 1.5 0" id="sus1" src="meshes/sus2_1.obj" mtl="meshes/sus2.mtl"></a-obj-model>
-      <a-obj-model position="0 1.5 0" id="sus2" src="meshes/sus2_2.obj" mtl="meshes/sus2.mtl"></a-obj-model> -->
+      <a-entity obj-model="obj: #stand-obj; mtl: #stand-mtl"
+                position="-14.1 -0.23 -5.11" rotation="-0.17 59.24 -0.45" scale="0.025 0.025 0.025">
+      </a-entity>
 
       <a-obj-model rotation="-90 0 0" position="0 1.5 0" id="sus1" src="meshes/sus_low_textured.obj"
                    material="shader: flat; src: meshes/sus_low_tex.jpg"></a-obj-model>
