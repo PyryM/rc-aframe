@@ -10,6 +10,7 @@
     <a-scene>
       <!-- Asset management system. -->
       <a-assets>
+        <img id="videoicon" src="images/videoicon.png">
         <img id="pano" src="images/pano_small.jpg">
         <video id="vidconstruction" src="videos/construction.mp4"></video>
         <video id="vidwed" loop="true" src="videos/timelapse_smaller.mp4"></video>
@@ -17,9 +18,10 @@
         <video id="videntrance" loop="true" autoplay src="videos/garage_fixed.mp4"></video>
         <video id="vidgarage" loop="true" autoplay src="videos/fccourtney_smaller.mp4"></video>
         <video id="vidhallway" loop="true" autoplay src="videos/hallway_fixed.mp4"></video>
+        <video id="vidinterview" loop="true" autoplay src="videos/interview_smaller.mp4"></video>
 
-        <a-asset-item id="stand-obj" src="meshes/stand.obj"></a-asset-item>
-        <a-asset-item id="stand-mtl" src="meshes/stand.mtl"></a-asset-item>
+        <!-- <a-asset-item id="stand-obj" src="meshes/stand.obj"></a-asset-item>
+        <a-asset-item id="stand-mtl" src="meshes/stand.mtl"></a-asset-item> -->
 
         <script id="imagesphere" type="text/html">
           <a-entity position="${x} 0.0 ${z}">
@@ -58,6 +60,16 @@
                     geometry="primitive: ring; radiusInner: 0.07; radiusOuter: 0.23"
                     material="color: #505050; shader: flat"></a-entity>
         </script>
+
+        <script id="videopane" type="text/html">
+          <a-entity position="${x} ${y} ${z}" rotation="0 ${rot} 0">
+            <a-circle material="color: #AABBFF; src: #videoicon; shader: flat" radius="1.0" position="0 0 -0.01"></a-circle>
+
+            <a-video src="${src}" width="${width}" height="${height}"
+                      videocontrol="src: ${src}; radius: ${rad}; pos: ${x} 1.6 ${z}">
+            </a-video>
+          </a-entity
+        </script>
       </a-assets>
 
       <a-sky color="gray"></a-sky>
@@ -74,43 +86,38 @@
       <a-obj-model rotation="-90 0 0" position="0 1.5 0" id="sus1" src="meshes/sus_low_untextured.obj"
                   material="shader: flat; color: gray"></a-obj-model>
 
-      <a-video src="#vidpaint" width="6.44" height="4.06" rotation="0 58.44 0"
-                position="-13.8 1.6 -9.28"
-                videocontrol="src: #vidpaint; radius: 3.0; pos: -13.8 1.6 -9.28">
-        <a-plane color="black" width="1.1" height="0.22" position="-1.9 -1.34 0.05">
-          <a-entity position="0.0 0.0 0.005" text="width: 1.0; value: Painting a wall\nIn the place; align: left; wrapCount: 20"></a-entity>
-        </a-plane>
-      </a-video>
+      <a-entity template="src: #videopane"
+        data-src="#vidpaint"
+        data-x="-13.8" data-y="1.6" data-z="-9.28" data-width="6.44" data-height="4.06"
+        data-rot="58.44" data-rad="6.0">
+      </a-entity>
 
-      <a-video src="#vidgarage" width="3.8" height="2.39" rotation="0 146.4 0"
-                position="-2.20 1.123 1.821"
-                videocontrol="src: #vidgarage; radius: 3.0; pos: -2.20 1.6 1.821">
-        <a-plane color="black" width="1.1" height="0.22" position="-0.8 -1.0 0.05">
-          <a-entity position="0.0 0.0 0.005" text="width: 1.0; value: A meeting\nHappening Here; align: left; wrapCount: 20"></a-entity>
-        </a-plane>
-      </a-video>
+      <a-entity template="src: #videopane"
+        data-src="#vidgarage"
+        data-x="-2.20" data-y="1.123" data-z="1.821" data-width="3.8" data-height="2.39"
+        data-rot="146.4" data-rad="3.0">
+      </a-entity>
 
-      <a-video src="#videntrance" width="5.72" height="3.74" rotation="0 -122 0"
-                position="6.39 1.647 3.44"
-                videocontrol="src: #videntrance; radius: 5.0; pos: 7.591 1.6 4.262">
-        <a-plane color="black" width="1.1" height="0.22" position="-2.0 -1.5 0.05">
-          <a-entity position="0.0 0.0 0.005" text="width: 1.0; value: Masonry installation\nLine two; align: left; wrapCount: 20"></a-entity>
-        </a-plane>
-      </a-video>
+      <a-entity template="src: #videopane"
+        data-src="#videntrance"
+        data-x="6.39" data-y="1.647" data-z="3.44" data-width="5.72" data-height="3.74"
+        data-rot="-122" data-rad="3.0">
+      </a-entity>
 
-      <a-video src="#vidhallway" width="3.2" height="1.8" rotation="0 -34 0"
-                position="1.78 1.0 -3.0"
-                videocontrol="src: #vidhallway; radius: 3.0; pos: 1.78 1.0 -3.0">
-        <a-plane color="black" width="1.1" height="0.22" position="-0.6 -0.7 0.05">
-          <a-entity position="0.0 0.0 0.005" text="width: 1.0; value: A meeting\nWith Courtney; align: left; wrapCount: 20"></a-entity>
-        </a-plane>
-      </a-video>
+      <a-entity template="src: #videopane"
+        data-src="#vidhallway"
+        data-x="1.78" data-y="1.0" data-z="-3.0" data-width="3.2" data-height="1.8"
+        data-rot="-34" data-rad="3.0">
+      </a-entity>
 
       <a-entity template="src: #videosphere"
           data-x="2.0" data-z="2.0" data-src="#vidwed"></a-entity>
 
       <a-entity template="src: #videosphere"
           data-x="-2.0" data-z="-2.0" data-src="#vidconstruction"></a-entity>
+
+      <a-entity template="src: #videosphere"
+          data-x="-5.0" data-z="-6.0" data-src="#vidinterview"></a-entity>
 
       <a-entity template="src: #imagesphere"
           data-x="-8.0" data-z="-6.0" data-src="#pano"></a-entity>

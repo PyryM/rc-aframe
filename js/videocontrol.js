@@ -2,7 +2,8 @@ AFRAME.registerComponent('videocontrol', {
   schema: {
     radius: {type: 'number', default: 1.0},
     src:    {type: 'selector'},
-    pos:    {type: 'vec3'}
+    pos:    {type: 'vec3'},
+    hide:   {type: 'boolean', default: true}
   },
 
   init: function() {
@@ -34,6 +35,7 @@ AFRAME.registerComponent('videocontrol', {
     }
     this.data.src.play();
     this.videoState = "playing";
+    this.el.setAttribute("visible", true);
   },
 
   stopPlaying: function(campos) {
@@ -42,5 +44,8 @@ AFRAME.registerComponent('videocontrol', {
     }
     this.data.src.pause();
     this.videoState = "stopped";
+    if(this.data.hide) {
+      this.el.setAttribute("visible", false);
+    }
   }
 });
