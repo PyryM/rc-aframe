@@ -101,3 +101,53 @@ AFRAME.registerComponent('walker', {
 
   update: function() {}
 });
+
+// alternate waypoint implementation; TODO: refactor the implementations
+AFRAME.registerComponent('waypoint', {
+  schema: {
+    camera: {type: 'selector'},
+    target: {type: 'string', default: ''}
+  },
+
+  init: function() {
+    this.isMoving = false;
+    this.targetPos = new THREE.Vector3();
+    this.curPos = new THREE.Vector3();
+    var self = this;
+    this.el.addEventListener('click', function (evt) {
+      self.startMove();
+    });
+  },
+
+  startMove: function() {
+    this.isMoving = true;
+    this.moveTime = 0.0;
+    var targetEl = this.el;
+    if(this.data.target != "") {
+      targetEl = document.getElementById(this.data.target);
+    }
+    var campos = this.data.camera.getAttribute("position");
+    var spos = targetEl.getAttribute("position");
+    this.targetPos.set(spos.x, campos.y, spos.z); // don't change height ever
+  },
+
+  tick: function(t, dt) {
+    if(!this.isMoving) {
+      return;
+    }
+    var spos = this.data.camera.getAttribute("position");
+    this.curPos.set(spos.x, spos.y, spos.z);
+    var dist = this.curPos.distanceTo(this.targetPos);
+    if(dist < 0.05) {
+      this.isMoving = false;
+      return;
+    }
+    this.curPos.lerp(this.targetPos, 0.05);
+    this.data.camera.setAttribute("position", this.curPos);
+    this.moveTime += dt / 1000.0;
+    if(this.moveTime > 2.0) {
+      console.log("Move timed out.");
+      this.isMoving = false;
+    }
+  },
+});
