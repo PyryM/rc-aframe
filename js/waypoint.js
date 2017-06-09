@@ -145,7 +145,7 @@ AFRAME.registerComponent('waypoint', {
     this.curPos.lerp(this.targetPos, 0.05);
     this.data.camera.setAttribute("position", this.curPos);
     this.moveTime += dt / 1000.0;
-    if(this.moveTime > 2.0) {
+    if(this.moveTime > 10.0) {
       console.log("Move timed out.");
       this.isMoving = false;
     }
